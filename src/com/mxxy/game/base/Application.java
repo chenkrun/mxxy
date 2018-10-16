@@ -145,7 +145,7 @@ abstract public class Application {
 	public void loadLayoutResources() {
 		loader = new XMLoader();
 		File dir = new File("script");
-		File[] files = dir.listFiles(new FilterByJava(".java"));
+		// File[] files = dir.listFiles(new FilterByJava(".java"));
 		for (int i = 0; i < configmanager.getPropertiseSize(); i++) {
 			try {
 				loader.loadUI(FileUtils.getPath("res/layout/" + configmanager.get(String.valueOf(i))));
