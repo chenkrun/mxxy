@@ -48,13 +48,13 @@ public class GameBuild implements IGameBuilder {
 
 	@Override
 	public Panel createPanel(String id, String fileName) {
-		System.out.println("createPanel" + fileName);
+		System.out.println("createPanel " + fileName);
 		Panel functionPanel = null;
 		try {
 			Document read = saxReader.read(fileName);
 			Element rootElement = read.getRootElement();
 			functionPanel = parsePanel(rootElement);
-			new PaneListener(functionPanel);
+			// new PaneListener(functionPanel);
 			parseComponent(functionPanel, rootElement);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -213,7 +213,9 @@ public class GameBuild implements IGameBuilder {
 		panel.setRightClickClose(rootElement.attributeValue("isReightClose") != null);
 		panel.setLocation(x, y);
 		panel.setName(rootElement.attributeValue("id"));
+		/* 根据存储在字符串中的类名创建对象 */
 		Class<?> class1 = Class.forName("com.mxxy.extendpackage." + panel.getName());
+		/* Java多态性：类对象赋值给接口变量，利用接口变量调用类对象方法 */
 		IPanelListener iPanelListener = InstanceUtil.getInstance(class1);
 		// IPanelListener iPanelListener=(IPanelListener)
 		// extendScript.loadUIScript(panel.getName());
@@ -287,7 +289,7 @@ public class GameBuild implements IGameBuilder {
 	}
 
 	/**
-	 * 反射
+	 * 反射：主要用于开发通用框架
 	 * 
 	 * @param mName
 	 *            方法名
