@@ -73,7 +73,8 @@ public class UIHelp {
 			Container canvas = windows.getContainers();
 			if (panel.getParent() == canvas) {
 				canvas.remove(panel);
-				panel.fireEvent(new PanelEvent(panel, PanelEvent.DISPOSE)); // 触发面板dispose事件
+				/* Confuse: 需要下面这句事件分发语句吗？ */
+				// panel.fireEvent(new PanelEvent(panel, PanelEvent.DISPOSE)); // 触发面板dispose事件
 				PanelManager.dispose(panel.getName(), panel);
 			}
 		}
