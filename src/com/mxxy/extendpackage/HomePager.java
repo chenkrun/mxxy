@@ -23,7 +23,7 @@ final public class HomePager extends AbstractPanelHandler {
 	@Override
 	public void init(PanelEvent evt) {
 		super.init(evt);
-		System.out.println("HomePager" + panel);
+		System.out.println("HomePager " + panel);
 		if (!isfrist)
 			showAnnouncer();
 		isfrist = true;
@@ -64,8 +64,9 @@ final public class HomePager extends AbstractPanelHandler {
 	 */
 	public void showAnnouncer() {
 		pager = new ScrollAnnouncer();
-		Thread thread = new Thread(pager);
-		thread.start();
+		/* 将报幕固定，不滚动显示 */
+		// Thread thread = new Thread(pager);
+		// thread.start();
 		panel.add(pager, 0);
 		pager.setBounds(0, 0, Constant.WINDOW_WIDTH, Constant.WINDOW_HEIGHT);
 		pager.addMouseListener(new MouseAdapter() {
