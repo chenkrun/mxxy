@@ -33,13 +33,14 @@ final public class LoginPager extends AbstractPanelHandler<LoginModler> {
 	@Override
 	public void init(PanelEvent evt) {
 		super.init(evt);
-		System.out.println("LoginPager" + panel);
+		System.out.println("LoginPager " + panel);
 	}
 
 	@Override
 	protected void initView() {
 		user_number = ComponentFactory.creatTextField();
 		cipher = ComponentFactory.creatPswd();
+		/* 注册回车按键 */
 		button = ComponentFactory.createJButton();
 		button.registerKeyboardAction(new ActionListener() {
 			@Override
@@ -86,6 +87,7 @@ final public class LoginPager extends AbstractPanelHandler<LoginModler> {
 		case SUCCESS:
 			uihelp.prompt(null, Constant.getString("Loding"), 1000);
 			Toolkit.sleep(1000);
+			/* 接入选择服务器面板 */
 			Panel selectserver = uihelp.getPanel("SelectServer");
 			uihelp.hidePanel(panel);
 			uihelp.showPanel(selectserver);
