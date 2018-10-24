@@ -31,7 +31,6 @@ public class SwingApplication extends Application {
 	protected IWindows createWindows() {
 		gameFrame = new GameFrame();
 		gameFrame.initContent(context);
-		loadingPanel = new LoadingPanel(312, 104);
 		return gameFrame;
 	}
 
@@ -47,6 +46,7 @@ public class SwingApplication extends Application {
 
 	@Override
 	protected void loadingpanel() {
+		loadingPanel = new LoadingPanel(312, 104);
 		gameFrame.showPanel(loadingPanel);
 	}
 
