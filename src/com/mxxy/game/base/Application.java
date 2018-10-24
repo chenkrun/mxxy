@@ -2,6 +2,8 @@ package com.mxxy.game.base;
 
 import java.io.File;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
@@ -91,10 +93,12 @@ abstract public class Application {
 		LoadingsWork loadingWork = new LoadingsWork();
 		loadingWork.execute();
 		try {
-			objects = loadingWork.get();
+			objects = loadingWork.get(30000, TimeUnit.MILLISECONDS);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (ExecutionException e) {
+			e.printStackTrace();
+		} catch (TimeoutException e) {
 			e.printStackTrace();
 		}
 	}
