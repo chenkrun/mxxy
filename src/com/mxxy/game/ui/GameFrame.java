@@ -45,12 +45,14 @@ public class GameFrame extends JFrame implements IWindows {
 		context.setWindows(this);
 		this.uihelp = new UIHelp(this);
 		icon = new ImageIcon(SpriteFactory.loadImage("res/componentsRes/title.png")).getImage();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(icon);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		super.setTitle(Constant.getString("MainTitle"));
 		setResizable(false);
+		/* Confuse: hideCursor */
 		hideCursor();
-		showSystemtTray();
+		/* 没必要在系统托盘上显示 */
+		// showSystemtTray();
 	}
 
 	@SuppressWarnings("deprecation")
