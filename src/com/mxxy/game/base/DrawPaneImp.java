@@ -84,6 +84,7 @@ abstract public class DrawPaneImp extends JPanel implements IPanelDraw {
 		graphics2d = (Graphics2D) bufferedImage.getGraphics();
 		fpsListen = new FPSController();
 		init();
+		/* 启动绘制线程 */
 		this.drawThread.start();
 	}
 
@@ -187,6 +188,7 @@ abstract public class DrawPaneImp extends JPanel implements IPanelDraw {
 		setFocusable(true);
 		requestFocus(true);
 		setSize(width, height);
+		/* Confuse: setPreferredSize */
 		setPreferredSize(new Dimension(width, height));
 	}
 
